@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.0] - 2024-07-30
+### Added
+- Added environments variables to project
+
 ## [0.0.3] - 2024-07-30
 ### Added
 - Added CHANGELOG.md
