@@ -1,8 +1,8 @@
 from dotenv import load_dotenv
 load_dotenv()
-import os
 
 from src.main.server.server import Server
+from src.main.config.config import Config
 
 if __name__ == '__main__':
-  Server().listen(port=os.getenv('PORT'), env=os.getenv('ENVIRONMENT'))
+  Server().listen(port=Config.PORT, env=Config.ENVIRONMENT)
