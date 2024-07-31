@@ -6,9 +6,9 @@ database_connector = SqlAlchemyDatabaseConnector()
 engine = database_connector.connect()
 
 database_schema = SqlAlchemyDatabaseSchema()
-Base = database_schema.create_base()
+Base = database_schema.create_base_schema()
 
 environment_manager = SqlAlchemyEnvironmentManager(Base, engine)
-environment_manager.listen_changes()
+environment_manager.listen_dev_db_changes()
 
 __all__ = ["engine", "Base"]
