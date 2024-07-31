@@ -9,5 +9,20 @@ class SqlAlchemyUserRepository(UserRepositoryInterface):
     Session = sessionmaker(bind=engine)
     self.session = Session()
 
+  def index():
+    return
+
   def index_one(self, user_id):
     return self.session.query(SqlAlchemyUserSchema).filter_by(id=uuid.UUID(user_id)).first()
+
+  def index_by_email(self, user_email):
+    return
+
+  def store(self, user):
+    return
+
+  def update(self, user):
+    return
+
+  def delete(self, user_id):
+    return
