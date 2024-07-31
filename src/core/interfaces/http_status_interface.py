@@ -1,4 +1,4 @@
 from abc import ABC
 
-class HTTPStatusInterface(ABC):
+class HttpStatusInterface(ABC):
   pass
