@@ -14,4 +14,6 @@ class UserController:
   @staticmethod
   @user_bp.route('/<string:user_id>', methods=['GET'])
   def index_one(user_id, http_status: HttpStatusInterface, index_one_user_use_case: IndexOneUserUseCaseInterface):
-    return make_response('', http_status.OK)
+    user = index_one_user_use_case.execute(user_id)
+    dto = UserResponseDto(id=user.id, name=user.name, email=user.email).to_dict()
+    return jsonify(dto), http_status.OK
