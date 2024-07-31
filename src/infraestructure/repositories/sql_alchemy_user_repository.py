@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker
 from src.infraestructure.datasources import engine
 from src.infraestructure.schemas.sql_alchemy_user_schema import SqlAlchemyUserSchema
-from src.infraestructure.interfaces.repositories.user_repository_interface import UserRepositoryInterface
+from src.application.interfaces.repositories.user_repository_interface import UserRepositoryInterface
 import uuid
 
 class SqlAlchemyUserRepository(UserRepositoryInterface):
