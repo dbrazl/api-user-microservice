@@ -1,5 +1,5 @@
 from injector import Binder, singleton
-from src.core.interfaces.http_status_interface import HttpStatusInterface
+from src.core.interfaces.network.http_status_interface import HttpStatusInterface
 from src.infraestructure.network.http_status import HttpStatus
 
 class DI:

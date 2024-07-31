@@ -1,5 +1,5 @@
 from flask import Blueprint, make_response
-from src.core.interfaces.http_status_interface import HttpStatusInterface
+from src.core.interfaces.network.http_status_interface import HttpStatusInterface
 
 class UserController:
   user_bp = Blueprint('user_bp', __name__)
