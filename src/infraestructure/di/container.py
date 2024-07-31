@@ -1,8 +1,8 @@
 from injector import Binder, singleton
-from src.core.interfaces.config_interface import ConfigInterface
-from src.infraestructure.config.config import Config
+from src.core.interfaces.http_status_interface import HttpStatusInterface
+from src.infraestructure.network.http_status import HttpStatus
 
 class DI:
   @staticmethod
   def configure(binder: Binder):
-    binder.bind(ConfigInterface, to=Config, scope=singleton)
+    binder.bind(HttpStatusInterface, to=HttpStatus, scope=singleton)
