@@ -14,10 +14,10 @@ class UserController:
   @staticmethod
   @user_bp.route('/', methods=['GET'])
   def index(http_status: HttpStatusInterface, index_users_factory: IndexUsersFactoryInterface):
-    filter = list(request.args.keys())[0]
+    filter = next(iter(request.args.keys()), None)
     index_use_case = index_users_factory.make_index_use_case(filter)
-    value = list(request.args.values())[0]
-    user_dto_or_list = index_use_case.execute(value)
+    filter_value = next(iter(request.args.values()), None)
+    user_dto_or_list = index_use_case.execute(filter_value)
 
     if isinstance(user_dto_or_list, list):
       dto_list = list(map(lambda user_dto: UserResponseDto(id=user_dto.id, name=user_dto.name, email=user_dto.email).to_dict(), user_dto_or_list))
