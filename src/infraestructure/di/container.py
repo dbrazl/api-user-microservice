@@ -1,12 +1,12 @@
 from injector import Binder, singleton
 from src.infraestructure.network.http_status import HttpStatus
 from src.infraestructure.repositories.sql_alchemy_user_repository import SqlAlchemyUserRepository
+from src.infraestructure.exceptions.exception_messages import ExceptionMessages
 from src.adapters.interfaces.controllers.user_controller_interface import UserControllerInterface
 from src.adapters.controllers.user_controller import UserController
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.repositories.user_repository_interface import UserRepositoryInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
-from src.application.exceptions.exception_messages import ExceptionMessages
 from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
 from src.application.factories.index_users_factory import IndexUsersFactory
 from src.application.interfaces.use_cases.index_user_by_id_use_case_interface import IndexUserByIdUseCaseInterface
