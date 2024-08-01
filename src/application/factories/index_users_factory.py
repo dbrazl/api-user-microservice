@@ -5,7 +5,7 @@ from src.application.interfaces.use_cases.index_users_use_case_interface import 
 
 class IndexUsersFactory(IndexUsersFactoryInterface):
   @inject
-  def make_index(
+  def make_index_use_case(
     self,
     filter: str,
     index_user_by_id: IndexUserByIdUseCaseInterface,

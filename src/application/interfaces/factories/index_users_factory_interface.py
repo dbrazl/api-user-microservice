@@ -4,5 +4,5 @@ from src.application.interfaces.use_cases.index_users_use_case_interface import 
 
 class IndexUsersFactoryInterface(ABC):
   @abstractmethod
-  def make_index(self, filter: str) -> IndexUserByIdUseCaseInterface | IndexUsersUseCaseInterface:
+  def make_index_use_case(self, filter: str) -> IndexUserByIdUseCaseInterface | IndexUsersUseCaseInterface:
     pass
