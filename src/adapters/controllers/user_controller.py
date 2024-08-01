@@ -3,6 +3,7 @@ from src.adapters.models.user_response_dto import UserResponseDto
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
 from src.application.exceptions.api_exception import ApiException
+from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
 
 class UserController:
   user_bp = Blueprint('user_bp', __name__)
@@ -31,3 +32,9 @@ class UserController:
   @user_bp.app_errorhandler(ApiException)
   def handle_api_exception(error):
     return jsonify({ "error": error.message }), error.status_code
+
+  @staticmethod
+  @user_bp.app_errorhandler(Exception)
+  def handle_exception(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
+    print(error)
+    return jsonify({ "error": exception_messages.INTERNAL_SERVER_ERROR }), http_status.INTERNAL_SERVER_ERROR
