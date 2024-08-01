@@ -10,3 +10,8 @@ class ExceptionMessagesInterface(ABC):
   @abstractmethod
   def USER_NOT_FOUND() -> str:
     pass
+
+  @property
+  @abstractmethod
+  def RESOURCE_NOT_FOUNDED() -> str:
+    pass

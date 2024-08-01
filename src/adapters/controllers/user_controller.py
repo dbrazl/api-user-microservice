@@ -34,7 +34,12 @@ class UserController:
     return jsonify({ "error": error.message }), error.status_code
 
   @staticmethod
+  @user_bp.app_errorhandler(404)
+  def handle_not_found_resource(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
+    return jsonify({ "error": exception_messages.RESOURCE_NOT_FOUNDED }), http_status.NOT_FOUND
+
+  @staticmethod
   @user_bp.app_errorhandler(Exception)
-  def handle_exception(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
+  def handle_unexpected_exception(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
     print(error)
     return jsonify({ "error": exception_messages.INTERNAL_SERVER_ERROR }), http_status.INTERNAL_SERVER_ERROR
