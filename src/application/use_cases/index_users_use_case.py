@@ -5,7 +5,7 @@ from src.application.dtos.user_dto import UserDto
 
 class IndexUsersUseCase(IndexUsersUseCaseInterface):
   @inject
-  def __init__(self, user_repository: UserRepositoryInterface):
+  def __init__(self, user_repository: UserRepositoryInterface) -> None:
     self.user_repository = user_repository
 
   def execute(self) -> list[UserDto]:
