@@ -30,13 +30,13 @@ class UserController:
 
   @staticmethod
   @user_bp.app_errorhandler(ApiException)
-  def handle_api_exception(error) -> tuple[Response, int]:
+  def handle_api_exception(error: ApiException) -> tuple[Response, int]:
     return jsonify({ "error": error.message }), error.status_code
 
   @staticmethod
   @user_bp.app_errorhandler(404)
   def handle_not_found_resource(
-    error,
+    error: Exception,
     exception_messages: ExceptionMessagesInterface,
     http_status: HttpStatusInterface
   ) -> tuple[Response, int]:
@@ -45,7 +45,7 @@ class UserController:
   @staticmethod
   @user_bp.app_errorhandler(405)
   def handle_method_not_allowed(
-    error,
+    error: Exception,
     exception_messages: ExceptionMessagesInterface,
     http_status: HttpStatusInterface
   ) -> tuple[Response, int]:
@@ -54,7 +54,7 @@ class UserController:
   @staticmethod
   @user_bp.app_errorhandler(Exception)
   def handle_unexpected_exception(
-    error,
+    error: Exception,
     exception_messages: ExceptionMessagesInterface,
     http_status: HttpStatusInterface
   ) -> tuple[Response, int]:
