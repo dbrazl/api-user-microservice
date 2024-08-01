@@ -2,6 +2,7 @@ from flask import Blueprint, make_response, jsonify, request
 from src.adapters.models.user_response_dto import UserResponseDto
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
+from src.application.exceptions.api_exception import ApiException
 
 class UserController:
   user_bp = Blueprint('user_bp', __name__)
@@ -25,3 +26,8 @@ class UserController:
 
     dto = UserResponseDto(id=user_dto_or_list.id, name=user_dto_or_list.name, email=user_dto_or_list.email).to_dict()
     return jsonify(dto), http_status.OK
+
+  @staticmethod
+  @user_bp.app_errorhandler(ApiException)
+  def handle_api_exception(error):
+    return jsonify({ "error": error.message }), error.status_code
