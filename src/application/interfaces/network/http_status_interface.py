@@ -8,5 +8,10 @@ class HttpStatusInterface(ABC):
 
   @property
   @abstractmethod
+  def NOT_FOUND() -> int:
+    pass
+
+  @property
+  @abstractmethod
   def INTERNAL_SERVER_ERROR() -> int:
     pass
