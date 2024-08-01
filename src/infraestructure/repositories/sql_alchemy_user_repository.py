@@ -10,8 +10,10 @@ class SqlAlchemyUserRepository(UserRepositoryInterface):
     Session = sessionmaker(bind=engine)
     self.session = Session()
 
-  def index() -> list[UserDto]:
-    return
+  def index(self) -> list[UserDto]:
+    user_entities = self.session.query(SqlAlchemyUserSchema).all()
+    users_dto = list(map(lambda user_entity: UserDto(id=user_entity.id, name=user_entity.name, email=user_entity.email), user_entities))
+    return users_dto
 
   def index_by_id(self, user_id: str) -> UserDto | None:
     user_entity = self.session.query(SqlAlchemyUserSchema).filter_by(id=uuid.UUID(user_id)).first()
