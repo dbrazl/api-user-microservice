@@ -9,5 +9,8 @@ class IndexUserByIdUseCase(IndexUserByIdUseCaseInterface):
     self.user_repository = user_repository
 
   def execute(self, user_id: str) -> UserDto:
-    return self.user_repository.index_one(user_id)
+    user_dto = self.user_repository.index_by_id(user_id)
+
+    if not user_dto:
+      raise RuntimeError()
 
