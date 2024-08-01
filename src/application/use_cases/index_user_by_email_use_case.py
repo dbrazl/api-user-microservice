@@ -1,5 +1,5 @@
 from injector import inject
-from application.dtos.user_dto import UserDto
+from src.application.dtos.user_dto import UserDto
 from src.application.interfaces.use_cases.index_user_by_email_use_case_interface import IndexUserByEmailUseCaseInterface
 from src.application.interfaces.repositories.user_repository_interface import UserRepositoryInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
