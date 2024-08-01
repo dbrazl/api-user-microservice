@@ -1,4 +1,4 @@
-from flask import Blueprint, make_response, jsonify, request
+from flask import Blueprint, make_response, jsonify, request, Response
 from src.adapters.models.user_response_dto import UserResponseDto
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
@@ -10,12 +10,12 @@ class UserController:
 
   @staticmethod
   @user_bp.route('/health', methods=['GET'])
-  def health(http_status: HttpStatusInterface):
+  def health(http_status: HttpStatusInterface) -> tuple[Response, int]:
     return make_response('', http_status.OK)
 
   @staticmethod
   @user_bp.route('/', methods=['GET'])
-  def index(http_status: HttpStatusInterface, index_users_factory: IndexUsersFactoryInterface):
+  def index(http_status: HttpStatusInterface, index_users_factory: IndexUsersFactoryInterface) -> tuple[Response, int]:
     filter = next(iter(request.args.keys()), None)
     filter_value = next(iter(request.args.values()), None)
     index_use_case = index_users_factory.make_index_use_case(filter)
@@ -30,21 +30,32 @@ class UserController:
 
   @staticmethod
   @user_bp.app_errorhandler(ApiException)
-  def handle_api_exception(error):
+  def handle_api_exception(error) -> tuple[Response, int]:
     return jsonify({ "error": error.message }), error.status_code
 
   @staticmethod
   @user_bp.app_errorhandler(404)
-  def handle_not_found_resource(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
+  def handle_not_found_resource(
+    error,
+    exception_messages: ExceptionMessagesInterface,
+    http_status: HttpStatusInterface
+  ) -> tuple[Response, int]:
     return jsonify({ "error": exception_messages.RESOURCE_NOT_FOUNDED }), http_status.NOT_FOUND
 
   @staticmethod
   @user_bp.app_errorhandler(405)
-  def handle_method_not_allowed(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
+  def handle_method_not_allowed(
+    error,
+    exception_messages: ExceptionMessagesInterface,
+    http_status: HttpStatusInterface
+  ) -> tuple[Response, int]:
     return jsonify({ "error": exception_messages.METHOD_NOT_ALLOWED }), http_status.METHOD_NOT_ALLOWED
 
   @staticmethod
   @user_bp.app_errorhandler(Exception)
-  def handle_unexpected_exception(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
-    print(error)
+  def handle_unexpected_exception(
+    error,
+    exception_messages: ExceptionMessagesInterface,
+    http_status: HttpStatusInterface
+  ) -> tuple[Response, int]:
     return jsonify({ "error": exception_messages.INTERNAL_SERVER_ERROR }), http_status.INTERNAL_SERVER_ERROR
