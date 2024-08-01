@@ -24,3 +24,4 @@ class IndexUserByIdUseCase(IndexUserByIdUseCaseInterface):
     if not user_dto:
       raise ApiException(message=self.exception_messages.USER_NOT_FOUND, status_code=self.http_status.INTERNAL_SERVER_ERROR)
 
+    return user_dto
