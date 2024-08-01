@@ -17,7 +17,7 @@ class UserController:
     filter = next(iter(request.args.keys()), None)
     index_use_case = index_users_factory.make_index_use_case(filter)
     filter_value = next(iter(request.args.values()), None)
-    user_dto_or_list = index_use_case.execute(filter_value)
+    user_dto_or_list = index_use_case.execute(filter_value) if filter else index_use_case.execute()
 
     if isinstance(user_dto_or_list, list):
       dto_list = list(map(lambda user_dto: UserResponseDto(id=user_dto.id, name=user_dto.name, email=user_dto.email).to_dict(), user_dto_or_list))
