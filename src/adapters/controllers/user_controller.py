@@ -1,6 +1,6 @@
 from flask import Blueprint, make_response, jsonify
 from src.adapters.models.user_response_dto import UserResponseDto
-from src.adapters.interfaces.network.http_status_interface import HttpStatusInterface
+from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.use_cases.index_one_user_use_case_interface import IndexOneUserUseCaseInterface
 
 class UserController:
