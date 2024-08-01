@@ -5,6 +5,8 @@ from src.application.interfaces.network.http_status_interface import HttpStatusI
 from src.application.interfaces.repositories.user_repository_interface import UserRepositoryInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
 from src.application.exceptions.exception_messages import ExceptionMessages
+from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
+from src.application.factories.index_users_factory import IndexUsersFactory
 from src.application.interfaces.use_cases.index_one_user_use_case_interface import IndexOneUserUseCaseInterface
 from src.application.use_cases.index_one_user_use_case import IndexOneUserUseCase
 
@@ -14,4 +16,5 @@ class DI:
     binder.bind(HttpStatusInterface, to=HttpStatus, scope=singleton)
     binder.bind(UserRepositoryInterface, to=SqlAlchemyUserRepository, scope=singleton)
     binder.bind(ExceptionMessagesInterface, to=ExceptionMessages, scope=singleton)
+    binder.bind(IndexUsersFactoryInterface, to=IndexUsersFactory, scope=singleton)
     binder.bind(IndexOneUserUseCaseInterface, to=IndexOneUserUseCase, scope=singleton)
