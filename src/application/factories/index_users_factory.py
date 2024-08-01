@@ -5,15 +5,14 @@ from src.application.interfaces.use_cases.index_users_use_case_interface import 
 
 class IndexUsersFactory(IndexUsersFactoryInterface):
   @inject
-  def make_index_use_case(
-    self,
-    filter: str,
-    index_user_by_id: IndexUserByIdUseCaseInterface,
-    index_users: IndexUsersUseCaseInterface
-  ) -> IndexUserByIdUseCaseInterface | IndexUsersUseCaseInterface:
+  def __init__(self, index_user_by_id_use_case: IndexUserByIdUseCaseInterface, index_users_use_case: IndexUsersUseCaseInterface) -> None:
+    self.index_user_by_id_use_case = index_user_by_id_use_case
+    self.index_users_use_case = index_users_use_case
+
+  def make_index_use_case(self, filter: str) -> IndexUserByIdUseCaseInterface | IndexUsersUseCaseInterface:
     match filter:
       case 'id':
-        return index_user_by_id
+        return self.index_user_by_id_use_case
 
       case _:
-        return index_users
+        return self.index_users_use_case
