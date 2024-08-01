@@ -7,11 +7,11 @@ class UserRepositoryInterface(ABC):
     pass
 
   @abstractmethod
-  def index_one(self, user_id: str) -> UserDto:
+  def index_one(self, user_id: str) -> UserDto | None:
     pass
 
   @abstractmethod
-  def index_by_email(self, user_email: str) -> UserDto:
+  def index_by_email(self, user_email: str) -> UserDto | None:
     pass
 
   @abstractmethod
