@@ -15,8 +15,8 @@ class UserController:
   @user_bp.route('/', methods=['GET'])
   def index(http_status: HttpStatusInterface, index_users_factory: IndexUsersFactoryInterface):
     filter = next(iter(request.args.keys()), None)
-    index_use_case = index_users_factory.make_index_use_case(filter)
     filter_value = next(iter(request.args.values()), None)
+    index_use_case = index_users_factory.make_index_use_case(filter)
     user_dto_or_list = index_use_case.execute(filter_value) if filter else index_use_case.execute()
 
     if isinstance(user_dto_or_list, list):
