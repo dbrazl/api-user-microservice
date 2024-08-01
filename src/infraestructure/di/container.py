@@ -7,8 +7,8 @@ from src.application.interfaces.exceptions.exception_messages_interface import E
 from src.application.exceptions.exception_messages import ExceptionMessages
 from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
 from src.application.factories.index_users_factory import IndexUsersFactory
-from src.application.interfaces.use_cases.index_one_user_use_case_interface import IndexOneUserUseCaseInterface
-from src.application.use_cases.index_one_user_use_case import IndexOneUserUseCase
+from src.application.interfaces.use_cases.index_user_by_id_use_case_interface import IndexUserByIdUseCaseInterface
+from src.application.use_cases.index_user_by_id_use_case import IndexUserByIdUseCase
 
 class DI:
   @staticmethod
@@ -17,4 +17,4 @@ class DI:
     binder.bind(UserRepositoryInterface, to=SqlAlchemyUserRepository, scope=singleton)
     binder.bind(ExceptionMessagesInterface, to=ExceptionMessages, scope=singleton)
     binder.bind(IndexUsersFactoryInterface, to=IndexUsersFactory, scope=singleton)
-    binder.bind(IndexOneUserUseCaseInterface, to=IndexOneUserUseCase, scope=singleton)
+    binder.bind(IndexUserByIdUseCaseInterface, to=IndexUserByIdUseCase, scope=singleton)
