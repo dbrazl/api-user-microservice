@@ -6,7 +6,7 @@ from src.application.dtos.user_dto import UserDto
 import uuid
 
 class SqlAlchemyUserRepository(UserRepositoryInterface):
-  def __init__(self):
+  def __init__(self) -> None:
     Session = sessionmaker(bind=engine)
     self.session = Session()
 
@@ -22,7 +22,10 @@ class SqlAlchemyUserRepository(UserRepositoryInterface):
       return UserDto(id=user_entity.id, name=user_entity.name, email=user_entity.email)
 
   def index_by_email(self, user_email: str) -> UserDto | None:
-    return
+    user_entity = self.session.query(SqlAlchemyUserSchema).filter_by(email=user_email).first()
+
+    if user_entity:
+      return UserDto(id=user_entity.id, name=user_entity.name, email=user_entity.email)
 
   def store(self, user: UserDto) -> None:
     return
