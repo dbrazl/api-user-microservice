@@ -1,7 +1,7 @@
-from flask import Blueprint, make_response, jsonify
+from flask import Blueprint, make_response, jsonify, request
 from src.adapters.models.user_response_dto import UserResponseDto
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
-from src.application.interfaces.use_cases.index_one_user_use_case_interface import IndexOneUserUseCaseInterface
+from src.application.interfaces.factories.index_users_factory_interface import IndexUsersFactoryInterface
 
 class UserController:
   user_bp = Blueprint('user_bp', __name__)
@@ -12,8 +12,16 @@ class UserController:
     return make_response('', http_status.OK)
 
   @staticmethod
-  @user_bp.route('/<string:user_id>', methods=['GET'])
-  def index_one(user_id, http_status: HttpStatusInterface, index_one_user_use_case: IndexOneUserUseCaseInterface):
-    user = index_one_user_use_case.execute(user_id)
-    dto = UserResponseDto(id=user.id, name=user.name, email=user.email).to_dict()
+  @user_bp.route('/', methods=['GET'])
+  def index(http_status: HttpStatusInterface, index_users_factory: IndexUsersFactoryInterface):
+    filter = list(request.args.keys())[0]
+    index_use_case = index_users_factory.make_index_use_case(filter)
+    value = list(request.args.values())[0]
+    user_dto_or_list = index_use_case.execute(value)
+
+    if isinstance(user_dto_or_list, list):
+      dto_list = list(map(lambda user_dto: UserResponseDto(id=user_dto.id, name=user_dto.name, email=user_dto.email).to_dict(), user_dto_or_list))
+      return dto_list
+
+    dto = UserResponseDto(id=user_dto_or_list.id, name=user_dto_or_list.name, email=user_dto_or_list.email).to_dict()
     return jsonify(dto), http_status.OK
