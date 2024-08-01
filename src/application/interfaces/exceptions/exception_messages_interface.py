@@ -30,3 +30,8 @@ class ExceptionMessagesInterface(ABC):
   @abstractmethod
   def DO_NOT_USE_ID_AND_EMAIL_FILTER_TOGETHER() -> str:
     pass
+
+  @property
+  @abstractmethod
+  def VALIDATION_FAILURE() -> str:
+    pass

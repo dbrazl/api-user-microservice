@@ -7,3 +7,4 @@ class ExceptionMessages(ExceptionMessagesInterface):
   METHOD_NOT_ALLOWED = 'Method not allowed. Check URL and HTTP verb'
   UNEXPECTED_FILTERS = 'The endpoint receive unexpected filters. Check the query params'
   DO_NOT_USE_ID_AND_EMAIL_FILTER_TOGETHER = 'Do not use id and email filter together'
+  VALIDATION_FAILURE = 'Validation failure'
