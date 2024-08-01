@@ -1,6 +1,8 @@
 from injector import Binder, singleton
 from src.infraestructure.network.http_status import HttpStatus
 from src.infraestructure.repositories.sql_alchemy_user_repository import SqlAlchemyUserRepository
+from src.adapters.interfaces.controllers.user_controller_interface import UserControllerInterface
+from src.adapters.controllers.user_controller import UserController
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.repositories.user_repository_interface import UserRepositoryInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
@@ -18,6 +20,7 @@ class DI:
   @staticmethod
   def configure(binder: Binder) -> None:
     binder.bind(HttpStatusInterface, to=HttpStatus, scope=singleton)
+    binder.bind(UserControllerInterface, to=UserController, scope=singleton)
     binder.bind(UserRepositoryInterface, to=SqlAlchemyUserRepository, scope=singleton)
     binder.bind(ExceptionMessagesInterface, to=ExceptionMessages, scope=singleton)
     binder.bind(IndexUsersFactoryInterface, to=IndexUsersFactory, scope=singleton)

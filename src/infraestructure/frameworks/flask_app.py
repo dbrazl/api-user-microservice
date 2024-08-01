@@ -2,7 +2,7 @@ from flask import Flask
 from flask_injector import FlaskInjector
 from src.infraestructure.di.container import DI
 from src.infraestructure.config.config import Config
-from src.adapters.controllers.user_controller import UserController
+from src.infraestructure.frameworks.flask_user_routes import FlaskUserRoutes
 
 class App:
   @staticmethod
@@ -18,4 +18,4 @@ class App:
 
   @staticmethod
   def register_blueprints(app):
-    app.register_blueprint(UserController.user_bp, url_prefix=f'/api/{Config.API_VERSION}/users')
+    app.register_blueprint(FlaskUserRoutes.user_bp, url_prefix=f'/api/{Config.API_VERSION}/users')
