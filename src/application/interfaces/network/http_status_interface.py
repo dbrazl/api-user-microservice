@@ -13,5 +13,10 @@ class HttpStatusInterface(ABC):
 
   @property
   @abstractmethod
+  def METHOD_NOT_ALLOWED() -> int:
+    pass
+
+  @property
+  @abstractmethod
   def INTERNAL_SERVER_ERROR() -> int:
     pass

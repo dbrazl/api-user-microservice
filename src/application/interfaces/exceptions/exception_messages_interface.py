@@ -15,3 +15,8 @@ class ExceptionMessagesInterface(ABC):
   @abstractmethod
   def RESOURCE_NOT_FOUNDED() -> str:
     pass
+
+  @property
+  @abstractmethod
+  def METHOD_NOT_ALLOWED() -> str:
+    pass

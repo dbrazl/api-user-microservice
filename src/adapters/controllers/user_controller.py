@@ -39,6 +39,11 @@ class UserController:
     return jsonify({ "error": exception_messages.RESOURCE_NOT_FOUNDED }), http_status.NOT_FOUND
 
   @staticmethod
+  @user_bp.app_errorhandler(405)
+  def handle_method_not_allowed(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
+    return jsonify({ "error": exception_messages.METHOD_NOT_ALLOWED }), http_status.METHOD_NOT_ALLOWED
+
+  @staticmethod
   @user_bp.app_errorhandler(Exception)
   def handle_unexpected_exception(error, exception_messages: ExceptionMessagesInterface, http_status: HttpStatusInterface):
     print(error)
