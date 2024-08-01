@@ -9,12 +9,15 @@ from src.application.interfaces.factories.index_users_factory_interface import I
 from src.application.factories.index_users_factory import IndexUsersFactory
 from src.application.interfaces.use_cases.index_user_by_id_use_case_interface import IndexUserByIdUseCaseInterface
 from src.application.use_cases.index_user_by_id_use_case import IndexUserByIdUseCase
+from src.application.interfaces.use_cases.index_users_use_case_interface import IndexUsersUseCaseInterface
+from src.application.use_cases.index_users_use_case import IndexUsersUseCase
 
 class DI:
   @staticmethod
-  def configure(binder: Binder):
+  def configure(binder: Binder) -> None:
     binder.bind(HttpStatusInterface, to=HttpStatus, scope=singleton)
     binder.bind(UserRepositoryInterface, to=SqlAlchemyUserRepository, scope=singleton)
     binder.bind(ExceptionMessagesInterface, to=ExceptionMessages, scope=singleton)
     binder.bind(IndexUsersFactoryInterface, to=IndexUsersFactory, scope=singleton)
     binder.bind(IndexUserByIdUseCaseInterface, to=IndexUserByIdUseCase, scope=singleton)
+    binder.bind(IndexUsersUseCaseInterface, to=IndexUsersUseCase, scope=singleton)
