@@ -20,3 +20,8 @@ class ExceptionMessagesInterface(ABC):
   @abstractmethod
   def METHOD_NOT_ALLOWED() -> str:
     pass
+
+  @property
+  @abstractmethod
+  def UNEXPECTED_FILTERS() -> str:
+    pass

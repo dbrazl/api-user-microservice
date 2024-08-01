@@ -5,3 +5,4 @@ class ExceptionMessages(ExceptionMessagesInterface):
   USER_NOT_FOUND = 'User not founded'
   RESOURCE_NOT_FOUNDED = 'Resource not founded'
   METHOD_NOT_ALLOWED = 'Method not allowed. Check URL and HTTP verb'
+  UNEXPECTED_FILTERS = 'The endpoint receive unexpected filters. Check the query params'

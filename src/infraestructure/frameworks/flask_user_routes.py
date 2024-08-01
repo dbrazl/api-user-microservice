@@ -1,9 +1,10 @@
 from flask import Blueprint, make_response, jsonify, request, Response
 from src.infraestructure.dtos.user_response_dto import UserResponseDto
+from src.infraestructure.validators.flask_check_for_unexpected_filters import flask_check_for_unexpected_filters
 from src.adapters.controllers.user_controller import UserController
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
-from src.application.exceptions.api_exception import ApiException
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
+from src.application.exceptions.api_exception import ApiException
 
 class FlaskUserRoutes:
   user_bp = Blueprint('user_bp', __name__)
@@ -15,6 +16,7 @@ class FlaskUserRoutes:
 
   @staticmethod
   @user_bp.route('/', methods=['GET'])
+  @flask_check_for_unexpected_filters
   def index(http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
     filter = next(iter(request.args.keys()), None)
     filter_value = next(iter(request.args.values()), None)

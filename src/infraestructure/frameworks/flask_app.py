@@ -14,7 +14,8 @@ class App:
 
   @staticmethod
   def configure_injector(app):
-    FlaskInjector(app=app, modules=[DI.configure])
+    flask_injector = FlaskInjector(app=app, modules=[DI.configure])
+    app.injector = flask_injector.injector
 
   @staticmethod
   def register_blueprints(app):
