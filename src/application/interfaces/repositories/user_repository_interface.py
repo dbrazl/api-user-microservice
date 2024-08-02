@@ -15,6 +15,10 @@ class UserRepositoryInterface(ABC):
     pass
 
   @abstractmethod
+  def index_by_name(self, name: str) -> list[UserDto]:
+    pass
+
+  @abstractmethod
   def store(self, user: UserDto) -> None:
     pass
 
