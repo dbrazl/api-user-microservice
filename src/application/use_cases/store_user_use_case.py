@@ -1,5 +1,5 @@
 from injector import inject
-from application.dtos.user_dto import UserDto
+from src.application.dtos.user_dto import UserDto
 from src.application.interfaces.use_cases.store_user_use_case_interface import StoreUserUseCaseInterface
 from src.application.interfaces.repositories.user_repository_interface import UserRepositoryInterface
 

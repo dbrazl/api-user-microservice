@@ -7,9 +7,11 @@ from src.infraestructure.validators.flask_check_for_id_email_used_together_valid
 from src.infraestructure.validators.flask_check_email_validator import flask_check_email_validator
 from src.infraestructure.validators.flask_check_id_validator import flask_check_id_validator
 from src.infraestructure.validators.flask_check_name_validator import flask_check_name_validator
+from src.infraestructure.validators.flask_body_request_user_validator import flask_body_request_user_validator
 from src.adapters.controllers.user_controller import UserController
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
+from src.application.dtos.user_dto import UserDto
 from src.application.exceptions.api_exception import ApiException
 
 class FlaskUserRoutes:
@@ -38,6 +40,16 @@ class FlaskUserRoutes:
 
     dto = UserResponseDto(id=user_dto_or_list.id, name=user_dto_or_list.name, email=user_dto_or_list.email).to_dict()
     return jsonify(dto), http_status.OK
+
+  @staticmethod
+  @user_bp.route('/', methods=['POST'])
+  @flask_body_request_user_validator
+  def store(http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
+    body = request.get_json()
+    user = UserDto(id=None, name=body['name'], email=body['email'])
+    user_controller.store(user)
+    return make_response('', http_status.NO_CONTENT)
+
 
   @staticmethod
   @user_bp.app_errorhandler(ValidationError)

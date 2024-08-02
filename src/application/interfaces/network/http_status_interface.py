@@ -8,6 +8,11 @@ class HttpStatusInterface(ABC):
 
   @property
   @abstractmethod
+  def NO_CONTENT() -> int:
+    pass
+
+  @property
+  @abstractmethod
   def BAD_REQUEST() -> int:
     pass
 
