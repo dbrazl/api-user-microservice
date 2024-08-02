@@ -34,7 +34,9 @@ class SqlAlchemyUserRepository(UserRepositoryInterface):
     return users_dto
 
   def store(self, user: UserDto) -> None:
-    return
+    new_user = SqlAlchemyUserSchema(id=user.id, name=user.name, email=user.email)
+    self.session.add(new_user)
+    self.session.commit()
 
   def update(self, user: UserDto) -> None:
     return
