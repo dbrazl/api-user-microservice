@@ -35,3 +35,8 @@ class ExceptionMessagesInterface(ABC):
   @abstractmethod
   def VALIDATION_ERROR() -> str:
     pass
+
+  @property
+  @abstractmethod
+  def USER_ALREADY_EXIST() -> str:
+    pass

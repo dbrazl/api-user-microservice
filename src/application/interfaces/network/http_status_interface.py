@@ -18,6 +18,11 @@ class HttpStatusInterface(ABC):
 
   @property
   @abstractmethod
+  def UNAUTHORIZED() -> int:
+    pass
+
+  @property
+  @abstractmethod
   def NOT_FOUND() -> int:
     pass
 

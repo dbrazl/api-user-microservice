@@ -8,3 +8,4 @@ class ExceptionMessages(ExceptionMessagesInterface):
   UNEXPECTED_FILTERS = 'The endpoint receive unexpected filters. Check the query params'
   DO_NOT_USE_ID_AND_EMAIL_FILTER_TOGETHER = 'Do not use id and email filter together'
   VALIDATION_ERROR = 'Validation error'
+  USER_ALREADY_EXIST = 'User already exist'
