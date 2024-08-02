@@ -8,7 +8,7 @@ def flask_check_for_unexpected_filters_validator(function):
   @wraps(function)
   def check(*args, **kwargs):
     query_params = request.args
-    allowed_params = {'id', 'email'}
+    allowed_params = {'id', 'email', 'name'}
 
     extra_params = set(query_params.keys()) - allowed_params
 
