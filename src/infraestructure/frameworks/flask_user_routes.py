@@ -43,7 +43,7 @@ class FlaskUserRoutes:
     error: ValidationError,
     exception_messages: ExceptionMessagesInterface,
     http_status: HttpStatusInterface
-  ):
+  ) -> tuple[Response, int]:
     dto = ValidationErrorDto(message=exception_messages.VALIDATION_ERROR, errors=error.errors()).to_dict()
     return dto, http_status.BAD_REQUEST
 
