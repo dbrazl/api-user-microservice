@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.3.0] - 2024-07-30
+## [0.4.0] - 2024-08-02
+
+### Added
+
+- Now you can filter users by name
+
+## [0.3.0] - 2024-08-01
 
 ### Added
 
