@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0] - 2024-07-30
+
+### Added
+
+- Has been created the index endpoint
+
 ## [0.2.0] - 2024-07-30
 
 ### Added
