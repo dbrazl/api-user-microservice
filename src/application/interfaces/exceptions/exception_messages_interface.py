@@ -33,5 +33,5 @@ class ExceptionMessagesInterface(ABC):
 
   @property
   @abstractmethod
-  def VALIDATION_FAILURE() -> str:
+  def VALIDATION_ERROR() -> str:
     pass
