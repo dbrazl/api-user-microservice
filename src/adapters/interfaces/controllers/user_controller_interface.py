@@ -9,3 +9,7 @@ class UserControllerInterface(ABC):
   @abstractmethod
   def index(self, filter: str, filter_value: str) -> list[UserDto] | UserDto:
     pass
+
+  @abstractmethod
+  def store(self, user: UserDto) -> None:
+    pass
