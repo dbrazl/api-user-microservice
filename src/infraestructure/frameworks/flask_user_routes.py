@@ -6,6 +6,7 @@ from src.infraestructure.validators.flask_check_for_unexpected_filters_validator
 from src.infraestructure.validators.flask_check_for_id_email_used_together_validator import flask_check_for_id_email_used_together_validator
 from src.infraestructure.validators.flask_check_email_validator import flask_check_email_validator
 from src.infraestructure.validators.flask_check_id_validator import flask_check_id_validator
+from src.infraestructure.validators.flask_check_name_validator import flask_check_name_validator
 from src.adapters.controllers.user_controller import UserController
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
@@ -25,6 +26,7 @@ class FlaskUserRoutes:
   @flask_check_for_id_email_used_together_validator
   @flask_check_email_validator
   @flask_check_id_validator
+  @flask_check_name_validator
   def index(http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
     filter = next(iter(request.args.keys()), None)
     filter_value = next(iter(request.args.values()), None)
