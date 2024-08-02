@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0] - 2024-08-02
+
+### Added
+
+- User can register
+
 ## [0.4.0] - 2024-08-02
 
 ### Added
