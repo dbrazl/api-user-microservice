@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.0] - 2024-08-03
+
+### Added
+
+- User can delete your data
+
 ## [0.6.0] - 2024-08-03
 
 ### Added
