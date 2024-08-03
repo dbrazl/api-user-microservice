@@ -49,7 +49,7 @@ class FlaskUserRoutes:
     body = request.get_json()
     user = UserDto(id=None, name=body['name'], email=body['email'])
     user_controller.store(user)
-    return make_response('', http_status.NO_CONTENT)
+    return make_response('', http_status.CREATED)
 
   @staticmethod
   @user_bp.route('/<string:id>', methods=['PUT'])

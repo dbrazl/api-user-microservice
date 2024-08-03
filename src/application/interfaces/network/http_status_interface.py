@@ -8,6 +8,11 @@ class HttpStatusInterface(ABC):
 
   @property
   @abstractmethod
+  def CREATED() -> int:
+    pass
+
+  @property
+  @abstractmethod
   def NO_CONTENT() -> int:
     pass
 
