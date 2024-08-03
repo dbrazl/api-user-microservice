@@ -39,7 +39,12 @@ class SqlAlchemyUserRepository(UserRepositoryInterface):
     self.session.commit()
 
   def update(self, user: UserDto) -> None:
-    return
+    existing_user = self.session.query(SqlAlchemyUserSchema).filter_by(id=uuid.UUID(user.id)).first()
+
+    if existing_user:
+      existing_user.name = user.name
+      existing_user.email = user.email
+      self.session.commit()
 
   def delete(self, user_id: str) -> None:
     return
