@@ -21,6 +21,8 @@ from src.application.interfaces.use_cases.store_user_use_case_interface import S
 from src.application.use_cases.store_user_use_case import StoreUserUseCase
 from src.application.interfaces.use_cases.update_user_use_case_interface import UpdateUserUseCaseInterface
 from src.application.use_cases.update_user_use_case import UpdateUserUseCase
+from src.application.interfaces.use_cases.delete_user_use_case_interface import DeleteUserUseCaseInterface
+from src.application.use_cases.delete_user_use_case import DeleteUserUseCase
 
 class DI:
   @staticmethod
@@ -36,3 +38,4 @@ class DI:
     binder.bind(IndexUsersByNameUseCaseInterface, to=IndexUsersByNameUseCase, scope=singleton)
     binder.bind(StoreUserUseCaseInterface, to=StoreUserUseCase, scope=singleton)
     binder.bind(UpdateUserUseCaseInterface, to=UpdateUserUseCase, scope=singleton)
+    binder.bind(DeleteUserUseCaseInterface, to=DeleteUserUseCase, scope=singleton)
