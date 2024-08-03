@@ -3,7 +3,7 @@ from pydantic import ValidationError
 from src.infraestructure.dtos.user_response_dto import UserResponseDto
 from src.infraestructure.dtos.validation_error_dto import ValidationErrorDto
 from src.infraestructure.validators.flask_check_for_unexpected_filters_validator import flask_check_for_unexpected_filters_validator
-from src.infraestructure.validators.flask_check_for_id_email_used_together_validator import flask_check_for_id_email_used_together_validator
+from src.infraestructure.validators.flask_query_param_request_filters_together_validator import flask_query_param_request_filters_together_validator
 from src.infraestructure.validators.flask_check_email_validator import flask_check_email_validator
 from src.infraestructure.validators.flask_check_id_validator import flask_check_id_validator
 from src.infraestructure.validators.flask_check_name_validator import flask_check_name_validator
@@ -25,7 +25,7 @@ class FlaskUserRoutes:
   @staticmethod
   @user_bp.route('/', methods=['GET'])
   @flask_check_for_unexpected_filters_validator
-  @flask_check_for_id_email_used_together_validator
+  @flask_query_param_request_filters_together_validator
   @flask_check_email_validator
   @flask_check_id_validator
   @flask_check_name_validator

@@ -28,7 +28,7 @@ class ExceptionMessagesInterface(ABC):
 
   @property
   @abstractmethod
-  def DO_NOT_USE_ID_AND_EMAIL_FILTER_TOGETHER() -> str:
+  def DO_NOT_USE_FILTERS_TOGETHER() -> str:
     pass
 
   @property
