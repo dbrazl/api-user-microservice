@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0] - 2024-08-03
+
+### Added
+
+- User can update your data
+
 ## [0.5.2] - 2024-08-03
 
 ### Refactored
