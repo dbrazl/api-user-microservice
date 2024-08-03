@@ -4,7 +4,7 @@ from src.application.exceptions.api_exception import ApiException
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
 
-def flask_check_for_unexpected_filters_validator(function):
+def flask_query_param_unexpected_filters_validator(function):
   @wraps(function)
   def check(*args, **kwargs):
     query_params = request.args
