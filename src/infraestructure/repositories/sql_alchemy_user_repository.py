@@ -47,4 +47,8 @@ class SqlAlchemyUserRepository(UserRepositoryInterface):
       self.session.commit()
 
   def delete(self, user_id: str) -> None:
-    return
+    user = self.session.query(SqlAlchemyUserSchema).filter_by(id=uuid.UUID(user_id)).first()
+
+    if user:
+      self.session.delete(user)
+      self.session.commit()
