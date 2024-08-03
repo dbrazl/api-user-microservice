@@ -61,6 +61,12 @@ class FlaskUserRoutes:
     user_controller.update(user)
     return make_response('', http_status.NO_CONTENT)
 
+  @staticmethod
+  @user_bp.route('/<string:id>', methods = ['DELETE'])
+  @flask_param_id_validator
+  def delete(id: str, http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
+    user_controller.delete(id)
+    return make_response('', http_status.OK)
 
   @staticmethod
   @user_bp.app_errorhandler(ValidationError)
