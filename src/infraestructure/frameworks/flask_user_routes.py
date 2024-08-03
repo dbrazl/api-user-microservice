@@ -8,6 +8,7 @@ from src.infraestructure.validators.flask_query_param_email_validator import fla
 from src.infraestructure.validators.flask_query_param_id_validator import flask_query_param_id_validator
 from src.infraestructure.validators.flask_query_param_name_validator import flask_query_param_name_validator
 from src.infraestructure.validators.flask_body_request_user_validator import flask_body_request_user_validator
+from src.infraestructure.validators.flask_param_id_validator import flask_param_id_validator
 from src.adapters.controllers.user_controller import UserController
 from src.application.interfaces.network.http_status_interface import HttpStatusInterface
 from src.application.interfaces.exceptions.exception_messages_interface import ExceptionMessagesInterface
@@ -48,6 +49,16 @@ class FlaskUserRoutes:
     body = request.get_json()
     user = UserDto(id=None, name=body['name'], email=body['email'])
     user_controller.store(user)
+    return make_response('', http_status.NO_CONTENT)
+
+  @staticmethod
+  @user_bp.route('/<string:id>', methods=['PUT'])
+  @flask_param_id_validator
+  @flask_body_request_user_validator
+  def update(id: str, http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
+    body = request.get_json()
+    user = UserDto(id=id, name=body['name'], email=body['email'])
+    user_controller.update(user)
     return make_response('', http_status.NO_CONTENT)
 
 
