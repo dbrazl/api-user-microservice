@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.2] - 2024-08-03
+
+### Refactored
+
+- Improve validator name
+
 ## [0.5.1] - 2024-08-02
 
 ### Fixed
