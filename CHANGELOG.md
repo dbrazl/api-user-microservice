@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.1] - 2024-08-03
+
+### Fixed
+
+- Return the http status for store endpoint correctly
+
 ## [0.7.0] - 2024-08-03
 
 ### Added
