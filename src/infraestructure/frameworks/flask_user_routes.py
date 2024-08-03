@@ -4,7 +4,7 @@ from src.infraestructure.dtos.user_response_dto import UserResponseDto
 from src.infraestructure.dtos.validation_error_dto import ValidationErrorDto
 from src.infraestructure.validators.flask_check_for_unexpected_filters_validator import flask_check_for_unexpected_filters_validator
 from src.infraestructure.validators.flask_query_param_request_filters_together_validator import flask_query_param_request_filters_together_validator
-from src.infraestructure.validators.flask_check_email_validator import flask_check_email_validator
+from src.infraestructure.validators.flask_query_param_email_validator import flask_query_param_email_validator
 from src.infraestructure.validators.flask_check_id_validator import flask_check_id_validator
 from src.infraestructure.validators.flask_check_name_validator import flask_check_name_validator
 from src.infraestructure.validators.flask_body_request_user_validator import flask_body_request_user_validator
@@ -26,7 +26,7 @@ class FlaskUserRoutes:
   @user_bp.route('/', methods=['GET'])
   @flask_check_for_unexpected_filters_validator
   @flask_query_param_request_filters_together_validator
-  @flask_check_email_validator
+  @flask_query_param_email_validator
   @flask_check_id_validator
   @flask_check_name_validator
   def index(http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
