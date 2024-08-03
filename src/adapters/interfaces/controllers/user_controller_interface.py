@@ -17,3 +17,7 @@ class UserControllerInterface(ABC):
   @abstractmethod
   def update(self, user: UserDto) -> None:
     pass
+
+  @abstractmethod
+  def delete(self, user_id: str) -> None:
+    pass
