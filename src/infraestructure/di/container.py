@@ -19,6 +19,8 @@ from src.application.interfaces.use_cases.index_users_by_name_use_case_interface
 from src.application.use_cases.index_users_by_name_use_case import IndexUsersByNameUseCase
 from src.application.interfaces.use_cases.store_user_use_case_interface import StoreUserUseCaseInterface
 from src.application.use_cases.store_user_use_case import StoreUserUseCase
+from src.application.interfaces.use_cases.update_user_use_case_interface import UpdateUserUseCaseInterface
+from src.application.use_cases.update_user_use_case import UpdateUserUseCase
 
 class DI:
   @staticmethod
@@ -33,3 +35,4 @@ class DI:
     binder.bind(IndexUserByEmailUseCaseInterface, to=IndexUserByEmailUseCase, scope=singleton)
     binder.bind(IndexUsersByNameUseCaseInterface, to=IndexUsersByNameUseCase, scope=singleton)
     binder.bind(StoreUserUseCaseInterface, to=StoreUserUseCase, scope=singleton)
+    binder.bind(UpdateUserUseCaseInterface, to=UpdateUserUseCase, scope=singleton)
