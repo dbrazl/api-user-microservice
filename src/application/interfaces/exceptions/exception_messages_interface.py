@@ -40,3 +40,8 @@ class ExceptionMessagesInterface(ABC):
   @abstractmethod
   def USER_ALREADY_EXIST() -> str:
     pass
+
+  @property
+  @abstractmethod
+  def USER_EMAIL_ALREADY_IN_USE() -> str:
+    pass
