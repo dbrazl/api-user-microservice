@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.1] - 2024-08-02
+
+### Fixed
+
+- The index method not more allow use name filter with another filter
+
 ## [0.5.0] - 2024-08-02
 
 ### Added
