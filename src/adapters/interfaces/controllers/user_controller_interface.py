@@ -13,3 +13,7 @@ class UserControllerInterface(ABC):
   @abstractmethod
   def store(self, user: UserDto) -> None:
     pass
+
+  @abstractmethod
+  def update(self, user: UserDto) -> None:
+    pass
