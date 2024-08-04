@@ -1,4 +1,5 @@
 from flask import Blueprint, make_response, jsonify, request, Response
+from flask_jwt_extended import jwt_required
 from pydantic import ValidationError
 from src.infraestructure.dtos.user_response_dto import UserResponseDto
 from src.infraestructure.dtos.validation_error_dto import ValidationErrorDto
@@ -25,6 +26,7 @@ class FlaskUserRoutes:
 
   @staticmethod
   @user_bp.route('/', methods=['GET'])
+  @jwt_required()
   @flask_query_param_unexpected_filters_validator
   @flask_query_param_request_filters_together_validator
   @flask_query_param_email_validator
@@ -44,6 +46,7 @@ class FlaskUserRoutes:
 
   @staticmethod
   @user_bp.route('/', methods=['POST'])
+  @jwt_required()
   @flask_body_request_user_validator
   def store(http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
     body = request.get_json()
@@ -53,6 +56,7 @@ class FlaskUserRoutes:
 
   @staticmethod
   @user_bp.route('/<string:id>', methods=['PUT'])
+  @jwt_required()
   @flask_param_id_validator
   @flask_body_request_user_validator
   def update(id: str, http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
@@ -63,6 +67,7 @@ class FlaskUserRoutes:
 
   @staticmethod
   @user_bp.route('/<string:id>', methods = ['DELETE'])
+  @jwt_required()
   @flask_param_id_validator
   def delete(id: str, http_status: HttpStatusInterface, user_controller: UserController) -> tuple[Response, int]:
     user_controller.delete(id)
