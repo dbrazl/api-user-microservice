@@ -55,7 +55,7 @@ Sigo os passo abaixo para pode instalar o projeto na máquina alvo.
 ### Passo 2: Ambiente virtual
 
 <p align="justify">
-  Com o projeto na máquina alvo, você pode criar um ambiente virtual para instalação dos pacotes, o que eu fortemente recomendo. Caso não queira, pule essa instrução.
+  Com o projeto na máquina alvo, você pode criar um ambiente virtual para instalação dos pacotes, o que eu fortemente recomendo. Caso não queira, pule para o próximo passo.
 </p>
 <p align="justify">
   Para se criar um ambiente virtual, você deve rodar o seguinte comando:
